@@ -18,9 +18,6 @@ export const SearchInput = () => {
     setValue(e.target.value);
   };
 
-  
-  
-
   useEffect(() => {
     const url = qs.stringifyUrl(
       {
@@ -32,8 +29,7 @@ export const SearchInput = () => {
       { skipEmptyString: true, skipNull: true }
     );
     // console.log("URL" , url);
-    router.push(url)
-    
+    router.push(url);
   }, [debouncedValue, router]);
 
   return (
