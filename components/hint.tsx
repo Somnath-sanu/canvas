@@ -40,4 +40,4 @@ export const Hint = ({
   );
 };
 
-//! asChild -> to avoid hydration errors
+//! asChild -> to avoid hydration errors and styling 

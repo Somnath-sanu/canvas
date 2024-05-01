@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
 import { v } from "convex/values";
 
@@ -189,6 +189,17 @@ export const unfavorite = mutation({
     }
 
     await ctx.db.delete(existingFavorite._id);
+
+    return board;
+  },
+});
+
+export const get = query({
+  args: {
+    id: v.id("boards"),
+  },
+  handler: async (ctx, args) => {
+    const board = ctx.db.get(args.id);
 
     return board;
   },
