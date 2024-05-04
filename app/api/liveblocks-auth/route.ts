@@ -8,8 +8,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 const liveblocks = new Liveblocks({
-  secret:
-    "sk_dev_AlSjvsMllpPE8BnPsnmHuewvBkI4FJB6F8xo3Ju_3f_AOtowpK0H4cxPxjywiU_B",
+  secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 });
 
 export async function POST(request: Request) {
@@ -24,7 +23,7 @@ export async function POST(request: Request) {
   const board = await convex.query(api.board.get, { id: room });
 
   if (board?.orgId !== authorization.orgId) {
-    return new Response("Unauthorised" , {status : 403});
+    return new Response("Unauthorised", { status: 403 });
   }
 
   const userInfo = {
